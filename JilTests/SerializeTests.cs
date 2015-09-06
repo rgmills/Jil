@@ -8251,5 +8251,19 @@ namespace JilTests
                 Assert.AreEqual("{\"NullableEnum\":null}", str);
             }
         }
+        
+        class _UriIssue163_UriToString
+        {
+            public Uri url { get; set; }
+        }
+
+        public void Issue163_UriToString()
+        {
+            var obj = new _UriIssue163_UriToString();
+            obj.url = new Uri("http://www.stackoverflow.com");
+
+            var str = JSON.Serialize(obj);
+            Assert.AreEqual("{\"url\":\"http://www.stackoverflow.com\"}", str);
+        }
     }
 }

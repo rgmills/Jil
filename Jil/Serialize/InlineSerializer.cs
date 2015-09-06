@@ -1057,6 +1057,15 @@ namespace Jil.Serialize
                 return;
             }
 
+            if (primitiveType == typeof(Uri))
+            {
+                var toStringMtd = typeof(Uri).GetMethod("ToString");
+                Emit.Call(toStringMtd);
+
+                WritePrimitive(typeof(string), quotesNeedHandling);
+                return;
+            }
+
             if(primitiveType == typeof(TimeSpan))
             {
                 WriteTimeSpan();
