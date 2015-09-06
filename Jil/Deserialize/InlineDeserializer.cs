@@ -576,6 +576,12 @@ namespace Jil.Deserialize
             }
         }
 
+        void ReadUri()
+        {
+            ReadString();
+            Emit.NewObject<Uri, string>();
+        }
+
         void ReadTimeSpan()
         {
             switch(DateFormat)
@@ -850,6 +856,12 @@ namespace Jil.Deserialize
             if (primitiveType == typeof(string))
             {
                 ReadString();
+                return;
+            }
+
+            if (primitiveType == typeof(Uri))
+            {
+                ReadUri();
                 return;
             }
 

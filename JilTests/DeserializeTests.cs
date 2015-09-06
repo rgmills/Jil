@@ -6129,6 +6129,17 @@ namespace JilTests
             }
         }
 
+        class _UriIssue163_UriToString
+        {
+            public Uri url { get; set; }
+        }
+
+        public void Issue163_UriToString()
+        {
+            var uri = JSON.Deserialize<_UriIssue163_UriToString>("{\"url\":\"http://www.stackoverflow.com\"}");
+            Assert.IsNotNull(uri.url);
+        }
+
 #if !DEBUG
         #region SlowSpinUp Types
 
